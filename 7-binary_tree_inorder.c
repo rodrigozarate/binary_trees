@@ -4,6 +4,7 @@
 * Date: November 30, 2021
 */
 
+#include "binary_trees.h"
 /**
 * binary_tree_inorder - Goes through binary tree using in-order transversal
 * @tree: pointer to Binary
