@@ -1,43 +1,39 @@
-/**
-* 2-binary_tree_insert_right.c - Insert node at left side of binary tree
+/*
+* 2-binary_tree_insert_right.c - Insert node at right side of binary tree
 * Author: Juan Sebastian Tovar Mogollon and Rodrigo Zárate Algecira
 * Date: November 30, 2021
 */
-#include "binary_trees.h"
+
 #include <stddef.h>
+#include "binary_trees.h"
 
 /**
-* binary_tree_insert_right - Insert a node at left side of binary tree
+* binary_tree_insert_right - Insert a node at right side of binary tree
 * @parent: Pointer to parent
 * @value: The value to insert in node
-* Return: right new node pointer
+* Return: Left new node pointer
 */
-
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
-	binary_tree_t *new_node = NULL;
+	binary_tree_t *right_node;
 
-	if (!parent)
-		return (NULL);
-
-	new_node = malloc(sizeof(binary_tree_t));
-
-	if (!new_node)
-		return (NULL);
-
-	new_node->parent = parent;
-	new_node->n = value;
-	new_node->left = NULL;
-
-	if (parent->right)
+	if (parent == NULL)
 	{
-		new_node->right = parent->right;
-		parent->right = new_node;
+		return (NULL);
 	}
-	else
+
+	right_node = binary_tree_node(parent, value);
+	if (right_node == NULL)
 	{
-		parent->right = new_node;
-		new_node->right = NULL;
+		return (NULL);
 	}
-	return (new_node);
+	right_node->right = parent->right;
+
+	if (right_node->right != NULL)
+	{
+		right_node->right->parent = right_node;
+	}
+	parent->right = right_node;
+
+	return (right_node);
 }
