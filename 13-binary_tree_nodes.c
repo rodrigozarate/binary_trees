@@ -23,10 +23,10 @@ int binary_tree_is_leaf(const binary_tree_t *node)
 
 	else
 		return (0);
-} 
+}
 
 /**
-* binary_tree_node - Create a binary tree node
+* binary_tree_nodes - Create a binary tree node
 * @tree: Pointer to tree
 * Return: size_t
 */
